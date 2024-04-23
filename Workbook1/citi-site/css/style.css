@@ -1,0 +1,53 @@
+body{
+    font-family: sans-serif;
+}
+header{
+    background-color: lightcoral;
+padding-top: 2rem;
+padding-bottom: 2rem;
+padding-left: 4rem;
+padding-right: 4rem;   
+}
+main{
+    margin-left: 20rem;
+    margin-right: 20rem;
+}
+table, tr, td{
+border-width: 1px;
+border-style: solid;
+border-color: blue;
+border-collapse: collapse;
+padding: 1rem;
+margin: 1px;
+}
+
+a{
+    height: 1rem;
+        color: white;
+        
+}
+a:hover {
+    color: red;
+}
+#no{
+    font-weight: 200;
+    background-color: beige;
+    text-align: left;
+}
+.brand{
+    text-indent: 0cqb;
+    column-rule-color: antiquewhite;
+    text-shadow: black 1px;
+    background-color: beige;
+}
+.card{
+    background-color: #dadada;
+    
+}
+footer{
+    background-color: lightcoral;
+padding-top: 2rem;
+padding-bottom: 2rem;
+padding-left: 4rem;
+padding-right: 4rem;
+}
