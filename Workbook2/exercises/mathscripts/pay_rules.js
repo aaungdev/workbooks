@@ -1,6 +1,6 @@
 "use strict";
 
-var payRate = 25; 
+var payRate = 17.30; 
 var overtimeRate = 1.5;
 var regularHours = 40;
 var hoursWorked = 45; 
