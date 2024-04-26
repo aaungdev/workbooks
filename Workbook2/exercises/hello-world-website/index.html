@@ -6,12 +6,14 @@
     <title>Hello World Website</title>
   </head>
   <body>
-    <div id="messageDiv"></div>
+    <div><h1>Welcome to my world 2.0</h1></div>
 
+    <button id="messageDiv">Whatsup</button>
 
-    <script>
-        var messageDiv = document.getElementById("messageDiv");
-        messageDiv.innerText ="Hello World";    
-    </script>
+    <input type="text" id="firstName" placeholder="enter first name" value="" />
+    
+    <input type="button" value="Say Hello" onclick="sayHi() ;" />
+   
+    <script src="scripts/greeting.js"></script>
   </body>
 </html>

@@ -1,0 +1,15 @@
+#number {
+    width: 300px;
+    margin: auto;
+  }
+  #calculator input[type=number], #calculator input[type=text] {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  #calculator button {
+    width: 23%;
+    margin-right: 2%;
+  }
+  #calculator button:last-child {
+    margin-right: 0;
+  }
