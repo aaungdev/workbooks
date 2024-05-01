@@ -13,3 +13,6 @@ var x = 67;
 var y = 34;
 
 add(x, y);
+
+const aung = "5";
+aung = "10";
