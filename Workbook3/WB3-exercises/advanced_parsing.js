@@ -4,9 +4,9 @@ function parseAndDisplayName(name) {
 
     console.log(`Name: ${name}`);
 
-    if (firstSpace === -1) { // No spaces found
+    if (firstSpace === -1) { 
         console.log(`Only name: ${name}`);
-    } else if (firstSpace === lastSpace) { // One space found
+    } else if (firstSpace === lastSpace) { 
         console.log(`First name: ${name.substring(0, firstSpace)}`);
         console.log(`Last name: ${name.substring(firstSpace + 1)}`);
     } else { // More than one space found
@@ -16,7 +16,6 @@ function parseAndDisplayName(name) {
     }
 }
 
-// Example usage
 parseAndDisplayName("Cher");
 parseAndDisplayName("Brenda Kaye");
 parseAndDisplayName("Dana Lynn Wyatt");
