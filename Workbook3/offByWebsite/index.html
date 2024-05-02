@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Off By Website</title>
   </head>
+
   <body>
     <main>
       <input type="date" id="dateInput" />
@@ -12,16 +13,17 @@
       <p id="messageParagraph"></p>
     </main>
     <script>
-      function init() {
-        const displayButton = document.getElementById("displayButton");
-        displayButton.onclick = displayDate;
-      }
       function displayDate() {
         let messageParagraph = document.getElementById("messageParagraph");
         let dateInput = document.getElementById("dateInput");
-        messageParagraph.innerText = dateInput.value;
+        let d = new Date(dateInput.value);
+        console.log(d.toString());
+        messageParagraph.innerText = d.toString();
       }
-      (window.onload = init), displayDate;
+      window.onload = function init() {
+        const displayButton = document.getElementById("displayButton");
+        displayButton.onclick = displayDate;
+      };
     </script>
   </body>
 </html>
