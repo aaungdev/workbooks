@@ -1,0 +1,26 @@
+#toppings {
+  display: block;
+}
+/* Add this to your style.css file or between <style> tags in your HTML document */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+#radioButton {
+    padding-bottom: 1em;
+}
+main {
+  width: 90%;
+  max-width: 600px;
+}
+#box {
+    padding: 1em 1em 1em 1em;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    background-size: cover;
+    background-position: center;
+}
