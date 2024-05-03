@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ice Cream Order Form</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="container">
+    <form id="iceCreamOrder">
+        <h2>Ice Cream Order Form</h2>
+        <label for="numScoops">Number of scoops:</label>
+        <input type="number" id="numScoops" min="1" value="1"><br>
+        <input type="radio" id="cone" name="container" value="cone" checked><label for="cone">Cone</label>
+        <input type="radio" id="cup" name="container" value="cup"><label for="cup">Cup</label><br>
+        <div class="toppings">
+            <label><input type="checkbox" id="sprinkles" value="0.50">Sprinkles ($0.50)</label>
+            <label><input type="checkbox" id="whippedCream" value="0.25">Whipped Cream ($0.25)</label>
+            <label><input type="checkbox" id="hotFudge" value="1.25">Hot Fudge ($1.25)</label>
+            <label><input type="checkbox" id="cherry" value="0.25">Cherry ($0.25)</label>
+        </div>
+        <button type="button" onclick="calculateTotal()">Submit Order</button>
+    </form>
+    <div id="result">
+        <table>
+            <tr><td>Base Price:</td><td id="basePrice"></td></tr>
+            <tr><td>Tax:</td><td id="tax"></td></tr>
+            <tr><td>Total Due:</td><td id="totalDue"></td></tr>
+        </table>
+    </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
