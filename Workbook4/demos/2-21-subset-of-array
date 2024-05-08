@@ -7,3 +7,13 @@ let menu = [
   { id: 4, item: "Ice tea", category: "Drink", price: 2.19 },
   { id: 5, item: "Coke", category: "Drink", price: 2.29 },
 ];
+
+let drinks = [];
+for (let index = 0; index < menu.length; index++) {
+  const menuItem = menu[index];
+  if (menuItem.category == "Drink") {
+    drinks.push(menuItem);
+  }
+}
+
+console.log(drinks);
