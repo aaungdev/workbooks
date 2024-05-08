@@ -57,7 +57,7 @@ function searchCourses() {
 
 function findCourseStartDate(courseId) {
     for (let i = 0; i < courses.length; i++) {
-        if (courses[i].CourseId === courseId) {
+        if (courses[i].CourseId == courseId) {
             return courses[i].StartDate;
         }
     }
@@ -66,7 +66,7 @@ function findCourseStartDate(courseId) {
 
 function findCourseTitle(courseId) {
     for (let i = 0; i < courses.length; i++) {
-        if (courses[i].CourseId === courseId) {
+        if (courses[i].CourseId == courseId) {
             return courses[i].Title;
         }
     }
@@ -86,7 +86,7 @@ function findLowCostCourseTitles() {
 function findCoursesByLocation(location) {
     let titles = [];
     for (let i = 0; i < courses.length; i++) {
-        if (courses[i].Location === location) {
+        if (courses[i].Location == location) {
             titles.push(courses[i].Title);
         }
     }
