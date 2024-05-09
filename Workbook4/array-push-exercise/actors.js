@@ -22,7 +22,7 @@ let academyMembers = [
 
 //Who is the Academy Member whose ID is 187?
 for (let i = 0; i < academyMembers.length; i++) {
-  if (academyMembers[i].memID === 187) {
+  if (academyMembers[i].memID == 187) {
     console.log("Member with ID 187:", academyMembers[i]);
     break;
   }
