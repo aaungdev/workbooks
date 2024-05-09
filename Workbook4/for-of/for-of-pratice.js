@@ -49,7 +49,7 @@ for (const course of courses) {
 
 // What is the title of the PROJ500 course?
 for (const course of courses) {
-  if (course.CourseId === "PROJ500") {
+  if (course.CourseId == "PROJ500") {
     console.log("PROJ500 Title:", course.Title);
   }
 }
