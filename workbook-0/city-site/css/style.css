@@ -1,0 +1,25 @@
+header {
+    background-color:lightyellow;
+    font-weight: 200;
+    text-decoration-color: rgb(0, 0, 0);
+    -webkit-text-fill-color: aliceblue;
+    color-scheme: black;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+}
+table{
+    border: 3px solid saddlebrown;
+   border-collapse: collapse;
+}
+
+.AA{
+    padding: 2rem;
+    border: 2px dashed cornflowerblue;
+    background-color: beige;
+}
+    
+.David{
+    background-color: bisque;
+    -webkit-text-fill-color: blue;
+    
+    
+}
