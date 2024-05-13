@@ -8,13 +8,12 @@ let menuItems = [
   { id: 5, item: "Coke", category: "Drink", price: 2.29 },
 ];
 
-let foundItem;
+let matchingItems = [];
 
 for (const item of menuItems) {
-    if(item.id== 4){
-        foundItem = item;
-        break;
-    }
+  if (item.category == "Drink") {
+    matchingItems.push(item);
+  }
 }
 
-console.log(foundItem);
+console.log(matchingItems);
