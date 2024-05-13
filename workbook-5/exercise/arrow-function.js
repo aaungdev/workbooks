@@ -12,13 +12,13 @@ let courses = [
 let prog200StartDate = courses.find(course => course.CourseId == "PROG200").StartDate;
 
 // What is the title of the PROJ500 course?
-let proj500Title = courses.find(course => course.CourseId == "PROG500").Title;
+let prog500Title = courses.find(course => course.CourseId == "PROG500").Title;
 
 // What are the titles of the courses that cost $50 or less?
+let lowCostCourseTitles = courses.find(course => course.Fee <= "50").Title;
 
 // What classes meet in "Classroom 1"?
 
 console.log(`PROG200 starts on: ${prog200StartDate}`);
-console.log(`Title of PROJ500: ${proj500Title}`);
+console.log(`Title of PROJ500: ${prog500Title}`);
 console.log(`Courses that cost $50 or less: ${lowCostCourseTitles.join(", ")}`);
-console.log(`Courses meeting in Classroom 1: ${classroom1Courses.join(", ")}`);
