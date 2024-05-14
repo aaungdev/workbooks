@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+      .container {
+        display: flex;
+        gap: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="grpA">
+        <img src="images/myanmar-art.png" alt="Sample Image" />
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem,
+          quos.
+        </p>
+      </div>
+
+      <div class="grpA">
+        <img src="images/myanmar-art.png" alt="" />
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta,
+          laborum.
+        </p>
+      </div>
+    </div>
+
+    <script>
+      window.onload = function () {
+        const elementsA = document.querySelectorAll(".grpA");
+        for (const element of elementsA) {
+          element.style.border = "4px solid red";
+          element.style.padding = "10px";
+          element.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.1)";
+          element.style.backgroundColor = "#f9f9f9";
+          element.style.flex = "1";
+        }
+
+        const imagesB = document.querySelectorAll(
+          'img:not([alt]), img[alt=""]',
+        );
+        for (const image of imagesB) {
+          const txt = document.createElement("p");
+          txt.innerText = "Myanmar art image";
+          image.parentNode.appendChild(txt);
+        }
+      };
+    </script>
+  </body>
+</html>
