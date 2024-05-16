@@ -101,5 +101,3 @@ window.onload = function() {
 
     loadCategories();
 };
-
-// Testing 02
