@@ -101,9 +101,5 @@ window.onload = function() {
 
     loadCategories();
 };
-// testing`
 
-//git init
-//git add .
-// git commit -m"message here"
-// git push origin main
+// Testing 02
