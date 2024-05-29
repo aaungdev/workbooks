@@ -114,15 +114,15 @@
 // doit(3);
 // console.log(numbers);
 
-/*let ticketHolder = {
-    ticketID : "GCIWMY",
-    tickholder : "Chris O'Gre",
-    seats : ["Sec E Row 22 Seat 1",
-             "Sec E Row 22 Seat 2"]
-  };
-  let amt = 0;
-  for (let i = 0; i < ticketHolder.seats.length; i++)
-  {
-    amt += 125;
-  }
-  console.log(amt);
+//let ticketHolder = {
+//     ticketID : "GCIWMY",
+//     tickholder : "Chris O'Gre",
+//     seats : ["Sec E Row 22 Seat 1",
+//              "Sec E Row 22 Seat 2"]
+//   };
+//   let amt = 0;
+//   for (let i = 0; i < ticketHolder.seats.length; i++)
+//   {
+//     amt += 125;
+//   }
+//   console.log(amt);
