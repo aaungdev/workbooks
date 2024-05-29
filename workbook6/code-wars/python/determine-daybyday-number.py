@@ -14,16 +14,13 @@
 # * With input `366, true` => return "December, 31"
 
 
-function getDay(day, isLeap) {
-  const daysInMonths = [31, isLeap ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-  const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-  
-  let monthIndex = 0;
-  while (day > daysInMonths[monthIndex]) {
-    day -= daysInMonths[monthIndex];
-    monthIndex++;
-  }
-  
-  return `${months[monthIndex]}, ${day}`;
-}
-
+def get_day(day, isLeap):
+    days_in_months = [31, 29 if isLeap else 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+    months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+    
+    month_index = 0
+    while day > days_in_months[month_index]:
+        day -= days_in_months[month_index]
+        month_index += 1
+    
+    return f"{months[month_index]}, {day}"
