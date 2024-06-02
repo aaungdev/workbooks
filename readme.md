@@ -49,4 +49,4 @@ I look forward to expanding my knowledge and working on more advanced projects i
 
 # 
 
-Thank you for visiting my MAC101 repository.
+Thank you for visiting my learn to code workbooks repository.
