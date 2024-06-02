@@ -16,7 +16,6 @@ I look forward to expanding my knowledge and working on more advanced projects i
 ### Workbook 6
 - **Code Wars & Algorithms**: Practice JavaScript, solve and debug problems
 - **Python & Java**: Learn new languages, compare syntax
-- **Algorithms**: Common algorithms (bubble sort, insertion sort, selection sort), Traveling Salesman problem
 - **Group Collaboration**: Mob coding
 
 ### Workbook 5
