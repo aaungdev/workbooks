@@ -48,6 +48,5 @@ I look forward to expanding my knowledge and working on more advanced projects i
 - **HTML**: Syntax, structure, tags, images, tables, validation, block/inline elements, semantic layout
 - **CSS**: Selectors, properties, inline styles, attribute selectors, pseudo-classes, units, fonts, specificity, box model, flexbox, grid, positioning, bootstrap
 
-# Workbooks
-
+# 
 This repository contains exercises and projects from my front-end development courses through Pluralsight, a partner of Year Up. Each week covers HTML5, CSS, Bootstrap, JavaScript, API, and basic Java and Python.
