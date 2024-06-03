@@ -1,0 +1,5 @@
+### treding gif
+GET https://api.giphy.com/v1/gifs/trending?api_key=jxsWjCqmRwGdtPK0Q08cQVNwD2BtG0FS
+
+### search gif
+https://api.giphy.com/v1/gifs/search?api_key=jxsWjCqmRwGdtPK0Q08cQVNwD2BtG0FS&q=funny+cat&limit=1
