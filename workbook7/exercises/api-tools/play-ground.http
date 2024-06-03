@@ -1,22 +1,23 @@
-# GET https://jsonplaceholder.typicode.com/albums/5
-
 ### GET Albums
+GET https://jsonplaceholder.typicode.com/albums/5
+
+### GET My Wesite
 GET https://outdoors-finder.netlify.app/
 
 ### GET Albums
 GET https://jsonplaceholder.typicode.com/albums/5
 
-### github api
+### Github Api
 GET https://api.github.com/users/craigmckeachie
 
-### treding gif
+### Treding Gif
 GET https://api.giphy.com/v1/gifs/trending?api_key=jxsWjCqmRwGdtPK0Q08cQVNwD2BtG0FS
 
-### search gif
+### Search Gif
 https://api.giphy.com/v1/gifs/search?api_key=jxsWjCqmRwGdtPK0Q08cQVNwD2BtG0FS&q=funny+cat&limit=1
 
-### dog api
+### Dog Api
 GET https://dog.ceo/api/breeds/image/random
 
-### cat api
+### Cat Api
 GET https://http.cat/200.jpg
