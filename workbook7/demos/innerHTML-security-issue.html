@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Comment Section</title>
+  </head>
+  <body>
+    <div id="comments"></div>
+    <form id="commentForm">
+      <input type="text" id="commentInput" placeholder="Enter your comment" />
+      <p>
+        Paste this code into the input and click submit.
+        <code>
+          <img src="x" onerror="alert('XSS Attack!');" />
+        </code>
+      </p>
+      <button type="submit">Submit</button>
+    </form>
+
+    <script>
+      document
+        .getElementById("commentForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          var comment = document.getElementById("commentInput").value;
+          var commentDiv = document.createElement("div");
+          commentDiv.innerHTML = comment;
+          document.getElementById("comments").appendChild(commentDiv);
+        });
+    </script>
+  </body>
+</html>
