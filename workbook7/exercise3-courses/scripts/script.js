@@ -14,9 +14,16 @@ document.addEventListener("DOMContentLoaded", function () {
         let titleCell = document.createElement("td");
         titleCell.textContent = course.title;
 
+        let detailsCell = document.createElement("td");
+        let anchor = document.createElement("a");
+        anchor.href = `details.html?courseid=${course.id}`;
+        anchor.textContent = "See details";
+        detailsCell.appendChild(anchor);
+
         row.appendChild(departmentCell);
         row.appendChild(numberCell);
         row.appendChild(titleCell);
+        row.appendChild(detailsCell);
         tbody.appendChild(row);
       });
     })
