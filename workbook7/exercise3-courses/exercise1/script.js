@@ -1,26 +1,24 @@
 "use strict";
 
-document.getElementById('addCourseForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-    let courseName = document.getElementById('courseName').value;
-    fetch('http://localhost:8081/api/courses', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ name: courseName })
-    })
-    .then(response => response.json())
-    .then(data => console.log(data))
-    .catch(error => console.error('Error:', error));
-});
+document.addEventListener("DOMContentLoaded", function () {
+  fetch("http://localhost:8081/api/courses")
+    .then((response) => response.json())
+    .then((data) => {
+      let tbody = document.querySelector("#coursesTable tbody");
+      data.forEach((course) => {
+        let row = document.createElement("tr");
+        let departmentCell = document.createElement("td");
+        departmentCell.textContent = course.department;
+        let numberCell = document.createElement("td");
+        numberCell.textContent = course.number;
+        let titleCell = document.createElement("td");
+        titleCell.textContent = course.title;
 
-document.getElementById('deleteCourse').addEventListener('click', function() {
-    let courseId = prompt('Enter the course ID to delete:');
-    fetch(`http://localhost:8081/api/courses/${courseId}`, {
-        method: 'DELETE'
+        row.appendChild(departmentCell);
+        row.appendChild(numberCell);
+        row.appendChild(titleCell);
+        tbody.appendChild(row);
+      });
     })
-    .then(response => response.json())
-    .then(data => console.log(data))
-    .catch(error => console.error('Error:', error));
+    .catch((error) => console.error("Error:", error));
 });
