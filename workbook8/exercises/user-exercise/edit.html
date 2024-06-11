@@ -1,35 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Edit User</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
     <style>
-        .btn-primary-custom {
-            background-color: #C2CF66;
-            border-color: #C2CF66;
-        }
+      .btn-primary-custom {
+        background-color: #64b5f6;
+        border-color: #64b5f6;
+      }
+      .container {
+        max-width: 600px;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
+    <nav
+      class="navbar navbar-expand-lg navbar-light"
+      style="background-color: #64b5f6"
+    >
+      <div class="container-fluid">
+        <a class="navbar-brand text-white" href="#">User Management</a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link text-white" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="add.html">Add User</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
     <div class="container mt-5">
-        <h1 class="mb-4">Edit User</h1>
-        <form id="editUserForm">
-            <div class="form-group">
-                <label for="name">Name:</label>
-                <input type="text" id="name" class="form-control" required>
-            </div>
-            <div class="form-group">
-                <label for="username">Username:</label>
-                <input type="text" id="username" class="form-control" required>
-            </div>
-            <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" id="email" class="form-control" required>
-            </div>
-            <button type="button" class="btn btn-primary-custom" onclick="editUserData()">Save</button>
-        </form>
+      <h1 class="mb-4 text-center">Edit User</h1>
+      <form id="editUserForm">
+        <div class="form-group mb-3">
+          <label for="name">Name:</label>
+          <input type="text" id="name" class="form-control" required />
+        </div>
+        <div class="form-group mb-3">
+          <label for="username">Username:</label>
+          <input type="text" id="username" class="form-control" required />
+        </div>
+        <div class="form-group mb-3">
+          <label for="email">Email:</label>
+          <input type="email" id="email" class="form-control" required />
+        </div>
+        <button
+          type="button"
+          class="btn btn-primary-custom"
+          onclick="editUserData()"
+        >
+          Save
+        </button>
+      </form>
     </div>
     <script src="scripts/edit.js"></script>
-</body>
+  </body>
 </html>
