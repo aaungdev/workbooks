@@ -1,35 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Add User</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <title>User Data</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
     <style>
-        .btn-primary-custom {
-            background-color: #C2CF66;
-            border-color: #C2CF66;
-        }
+      .custom-header {
+        background-color: #426d5e;
+        color: white;
+      }
+      .btn-primary-custom {
+        background-color: #aec8a6;
+        border-color: #c2cf66;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container mt-5">
-        <h1 class="mb-4">Add User</h1>
-        <form id="addUserForm">
-            <div class="form-group">
-                <label for="name">Name:</label>
-                <input type="text" id="name" class="form-control" required>
-            </div>
-            <div class="form-group">
-                <label for="username">Username:</label>
-                <input type="text" id="username" class="form-control" required>
-            </div>
-            <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" id="email" class="form-control" required>
-            </div>
-            <button type="button" class="btn btn-primary-custom" onclick="addUserData()">Save</button>
-        </form>
+      <h1 class="mb-4">User Data</h1>
+      <table class="table table-striped" id="userTable">
+        <thead class="custom-header">
+          <tr>
+            <th>Name</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <a href="add.html" class="btn btn-primary-custom">Add User</a>
     </div>
     <script src="scripts/index.js"></script>
-</body>
+  </body>
 </html>
