@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit User</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .btn-primary-custom {
+            background-color: #C2CF66;
+            border-color: #C2CF66;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Edit User</h1>
+        <form id="editUserForm">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" class="form-control" required>
+            </div>
+            <button type="button" class="btn btn-primary-custom" onclick="editUserData()">Save</button>
+        </form>
+    </div>
+    <script src="scripts/edit.js"></script>
+</body>
+</html>
