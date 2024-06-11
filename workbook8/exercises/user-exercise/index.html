@@ -9,12 +9,22 @@
       integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
       crossorigin="anonymous"
     />
+    <style>
+      .custom-header {
+        background-color: #426d5e;
+        color: white;
+      }
+      .btn-primary-custom {
+        background-color: #aec8a6;
+        border-color: #c2cf66;
+      }
+    </style>
   </head>
   <body>
     <div class="container mt-5">
       <h1 class="mb-4">User Data</h1>
       <table class="table table-striped" id="userTable">
-        <thead class="thead-dark">
+        <thead class="custom-header">
           <tr>
             <th>Name</th>
             <th>Username</th>
@@ -24,7 +34,7 @@
         </thead>
         <tbody></tbody>
       </table>
-      <a href="add.html" class="btn btn-primary">Add User</a>
+      <a href="add.html" class="btn btn-primary-custom">Add User</a>
     </div>
     <script src="script.js"></script>
   </body>
