@@ -11,6 +11,15 @@ I look forward to expanding my knowledge and working on more advanced projects i
 
 ## Weekly Progress
 
+### Workbook 8
+
+- **HTTP Methods**: POST, PUT, and DELETE requests
+- **Fetch API**: Make POST, PUT, and DELETE requests using `fetch()`
+- **Git Branching**: Create, merge, and delete branches
+- **Group Collaboration**: Collaborative exercises with branching and merging
+
+
+
 ### Workbook 7
 
 - **JSON**: Stringifying JSON, REST APIs
