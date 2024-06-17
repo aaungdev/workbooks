@@ -1,4 +1,4 @@
-"use strcit";
+"use strict";
 
 class Employee {
   constructor(id, firstName, lastName, jobTitle, payRate) {
@@ -12,6 +12,11 @@ class Employee {
   get fullName() {
     return `${this.firstName} ${this.lastName}`;
   }
+
+  promote(newJobTitle, newPayRate) {
+    this.jobTitle = newJobTitle;
+    this.payRate = newPayRate;
+  }
 }
 
 let employee1 = new Employee(1, "Ian", "Auston", "Graphic Artist", 42.5);
@@ -19,7 +24,6 @@ console.log(`Employee ${employee1.fullName} created`);
 console.log(`Job title is ${employee1.jobTitle}`);
 console.log(`Pay rate is $${employee1.payRate}`);
 
-let employee2 = new Employee(2, "Jane", "Doe", "Software Engineer", 55.0);
-console.log(`Employee ${employee2.fullName} created`);
-console.log(`Job title is ${employee2.jobTitle}`);
-console.log(`Pay rate is $${employee2.payRate}`);
+employee1.promote("Sr. Graphic Artist", 46.75);
+console.log(`Job title is ${employee1.jobTitle}`);
+console.log(`Pay rate is $${employee1.payRate}`);
