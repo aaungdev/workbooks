@@ -6,22 +6,38 @@
     <title>Information Page</title>
   </head>
   <body>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+      </ul>
+    </nav>
     <script>
       const name = localStorage.getItem("name");
       const role = localStorage.getItem("role");
 
       if (role === "Instructor") {
         document.write("<h1>Welcome Instructor " + name + "</h1>");
-        document.write("<button>Button 1</button><button>Button 2</button>");
+        document.write(
+          "<button>Button 1</button><button>Button 2</button><button>Button 3</button>"
+        );
         document.write(
           '<p style="color: blue;">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>'
         );
       } else if (role == "Student") {
         document.write("<h1>Welcome Student " + name + "</h1>");
-        document.write("<button>Button 1</button><button>Button 2</button>");
+        document.write(
+          "<button>Button 1</button><button>Button 2</button><button>Button 3</button>"
+        );
         document.write(
           '<p style="color: purple;">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>'
         );
+      }
+
+      document.write('<br><br><button onclick="logout()">Logout</button>');
+
+      function logout() {
+        localStorage.clear();
+        window.location.href = "index.html";
       }
     </script>
   </body>
