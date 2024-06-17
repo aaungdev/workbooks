@@ -1,32 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home Page</title>
-</head>
-<body>
+  </head>
+  <body>
     <h1>Welcome to the Site</h1>
     <form id="userForm">
-        <label for="name">Enter your name:</label>
-        <input type="text" id="name" name="name" required>
-        <br><br>
-        <label>Select your role:</label>
-        <input type="radio" id="student" name="role" value="Student" required>
-        <label for="student">Student</label>
-        <input type="radio" id="instructor" name="role" value="Instructor" required>
-        <label for="instructor">Instructor</label>
-        <br><br>
-        <button type="button" id="enterButton">Enter</button>
+      <label for="name">Enter your name:</label>
+      <input type="text" id="name" name="name" required />
+      <br /><br />
+      <label>Select your role:</label>
+      <input type="radio" id="student" name="role" value="Student" required />
+      <label for="student">Student</label>
+      <input
+        type="radio"
+        id="instructor"
+        name="role"
+        value="Instructor"
+        required
+      />
+      <label for="instructor">Instructor</label>
+      <br /><br />
+      <button type="button" id="enterButton">Enter</button>
     </form>
     <script>
-        document.getElementById('enterButton').onclick = function() {
-            const name = document.getElementById('name').value;
-            const role = document.querySelector('input[name="role"]:checked').value;
-            localStorage.setItem('name', name);
-            localStorage.setItem('role', role);
-            window.location.href = 'information.html';
-        };
+      document.getElementById("enterButton").onclick = function () {
+        const name = document.getElementById("name").value;
+        const role = document.querySelector('input[name="role"]:checked').value;
+        localStorage.setItem("name", name);
+        localStorage.setItem("role", role);
+        window.location.href = "information.html";
+      };
     </script>
-</body>
+  </body>
 </html>
