@@ -1,16 +1,15 @@
-# Python Learning
-
 import requests
 from requests.auth import HTTPBasicAuth
-import json
+import certifi
+import pandas as pd
 
-# ---- Configuration ----
-jira_url = "https://your-domain.atlassian.net"  # Replace with your Jira domain
-email = "your-email@example.com"                # Your Jira email
-api_token = "your-api-token"                    # Your Jira API token
+# ---- 1. CONFIGURATION ----
+jira_url = "https://your-domain.atlassian.net"  # 🔁 Replace with your Jira URL
+email = "your-email@example.com"                # 🔁 Replace with your Jira email
+api_token = "your-api-token"                    # 🔁 Replace with your Jira API token
 
-# JQL to get issues - customize as needed
-jql = "project = DEMO ORDER BY created DESC"
+# JQL to filter issues
+jql = "project = DEMO ORDER BY created DESC"    # 🔁 Change to your project key or custom JQL
 
 # Endpoint
 url = f"{jira_url}/rest/api/3/search"
@@ -24,23 +23,41 @@ headers = {
 # Parameters
 query = {
     'jql': jql,
-    'maxResults': 50,  # Number of issues to retrieve
-    'fields': 'summary,status,assignee'  # Add more fields as needed
+    'maxResults': 50,
+    'fields': 'summary,status,assignee,created,updated'
 }
 
-# Make request
+# ---- 2. MAKE REQUEST ----
 response = requests.get(
     url,
     headers=headers,
     params=query,
-    auth=HTTPBasicAuth(email, api_token)
+    auth=HTTPBasicAuth(email, api_token),
+    verify=certifi.where()  # ✅ Secure SSL verification
 )
 
-# Check response
+# ---- 3. HANDLE RESPONSE ----
 if response.status_code == 200:
     data = response.json()
-    for issue in data['issues']:
-        print(f"{issue['key']}: {issue['fields']['summary']} (Status: {issue['fields']['status']['name']})")
+    issues = data['issues']
+    
+    # Extract relevant fields
+    records = []
+    for issue in issues:
+        fields = issue['fields']
+        records.append({
+            'Key': issue['key'],
+            'Summary': fields['summary'],
+            'Status': fields['status']['name'],
+            'Assignee': fields['assignee']['displayName'] if fields['assignee'] else 'Unassigned',
+            'Created': fields['created'],
+            'Updated': fields['updated']
+        })
+    
+    # ---- 4. EXPORT TO EXCEL ----
+    df = pd.DataFrame(records)
+    df.to_excel("jira_issues.xlsx", index=False)
+    print("✅ Jira issues exported to 'jira_issues.xlsx'")
 else:
-    print(f"Failed to fetch issues: {response.status_code}")
+    print(f"❌ Failed to fetch issues: {response.status_code}")
     print(response.text)
