@@ -56,12 +56,6 @@ except Exception as e:
 
 
 
+This year’s GRA/EIT Summer Party turned our lunch hour into a lively celebration. With full decorations, a packed room, and great energy all around, the event brought teammates together for a much-needed break and plenty of smiles.
 
-#Issue:
-AMG currently has over 27 repositories that are no longer in use. Some of these became inactive following changes in GRA reporting. The presence of these outdated repositories makes it difficult to distinguish between active and inactive projects, leading to confusion during reporting and development.
-
-Solution:
-The proposed solution is to archive all identified inactive and no-longer-used repositories. This will clearly separate outdated content from active workspaces and reduce noise in the development environment.
-
-Benefits:
-Archiving these repositories will reduce confusion during GRA reporting, improve the accuracy of code-related metrics, enhance overall repository management, and help prevent accidental updates to inactive codebases.
+The Mediterranean menu—featuring dishes from Café Madeleine and Efis Gyro Restaurant—was a crowd favorite, adding flavor to an already vibrant afternoon. Thanks to everyone who joined and helped make it a summer highlight!
