@@ -1,61 +1,9 @@
-from jira import JIRA
-import pandas as pd
-import logging
-
-# ---- 1. SETUP LOGGING ----
-logging.basicConfig(level=logging.INFO)
-LOGGER = logging.getLogger(__name__)
-
-# ---- 2. CONFIGURATION ----
-JIRA_BASE_URL = "https://your-domain.atlassian.net"      # 🔁 Replace this
-JIRA_API_TOKEN = "your-api-token"                        # 🔁 Replace this
-JIRA_USER_EMAIL = "your-email@example.com"               # 🔁 Replace this
-JQL_QUERY = "project = DEMO ORDER BY created DESC"       # 🔁 Replace your JQL
-
-# ---- 3. CONNECT TO JIRA ----
-try:
-    jira_client = JIRA(
-        server=JIRA_BASE_URL,
-        token_auth=JIRA_API_TOKEN,
-        basic_auth=(JIRA_USER_EMAIL, JIRA_API_TOKEN),
-        options={"server": JIRA_BASE_URL},
-        verify=False  # ⚠️ Insecure, but needed for self-signed SSL
-    )
-    LOGGER.info("Connected to JIRA.")
-except Exception as e:
-    LOGGER.error(f"Failed to connect to JIRA: {e}")
-    raise
-
-# ---- 4. QUERY ISSUES ----
-try:
-    issues = jira_client.search_issues(
-        JQL_QUERY,
-        maxResults=50,
-        fields="summary,status,assignee,customfield_10200,customfield_12277"
-    )
-
-    data = []
-    for issue in issues:
-        fields = issue.fields
-        data.append({
-            "Key": issue.key,
-            "Summary": fields.summary,
-            "Status": fields.status.name,
-            "Assignee": fields.assignee.displayName if fields.assignee else "Unassigned",
-            "Epic Link": getattr(fields, "customfield_10200", None),
-            "Parent Link": getattr(fields, "customfield_12277", None),
-        })
-
-    # ---- 5. EXPORT TO EXCEL ----
-    df = pd.DataFrame(data)
-    df.to_excel("jira_export.xlsx", index=False)
-    print("✅ Exported JIRA issues to 'jira_export.xlsx'")
-
-except Exception as e:
-    LOGGER.error(f"Error fetching issues: {e}")
-
-
-
-This year’s GRA/EIT Summer Party turned our lunch hour into a lively celebration. With full decorations, a packed room, and great energy all around, the event brought teammates together for a much-needed break and plenty of smiles.
-
-The Mediterranean menu—featuring dishes from Café Madeleine and Efis Gyro Restaurant—was a crowd favorite, adding flavor to an already vibrant afternoon. Thanks to everyone who joined and helped make it a summer highlight!
+	1.	What was the main purpose of this repository?
+	2.	Which prediction model(s) were used?
+	3.	How was the model implemented or applied?
+	4.	What data sources did it use?
+	5.	What were the key outcomes or performance results?
+	6.	Were there any notable tools, features, or integrations?
+	7.	What impact did it have on operations or reporting?
+	8.	Why was this repository archived?
+	9.	Was it replaced, merged, or made obsolete by changes?
