@@ -1,7 +1,3 @@
-=IF(B5=0, "Error", IFERROR(SUMPRODUCT(('WORK DRIVER'!CQ:CQ=C5)*ISNUMBER(MATCH('WORK DRIVER'!CV:CV, {"MRM Tasks","OMRs","RAIs","RMs"}, 0))*N('WORK DRIVER'!GC:GC))/B5, "Error"))
-=IF(B5=0, "Error", IFERROR(SUMPRODUCT(('WORK DRIVER'!CQ$2:CQ$1000=C5)*ISNUMBER(MATCH('WORK DRIVER'!CV$2:CV$1000, {"MRM Tasks","OMRs","RAIs","RMs"}, 0))*N('WORK DRIVER'!GC$2:GC$1000))/B5, "Error"))
-
-
 First, I’d like to walk you through the calculation steps I plan to take. Second, I want to highlight some challenges I’m facing with the Excel file. Please let me know if you have any suggestions or an alternative approach.
 
 Calculation Steps & Logic:
@@ -20,5 +16,8 @@ Challenge:
 
 The issue arises in step 2 — the Work Driver tab contains only formulas. Excel doesn’t allow recalculating an already calculated result directly within a formula.
 
+One workaround is to copy and paste the Work Driver tab as values (without formatting) into a new tab and perform the calculations there. However, if I try to calculate everything directly using formulas without referencing any tab, Excel cannot handle the complexity.
 
-IFERROR(IF(B5=0, "Error", SUMPRODUCT(('WORK DRIVER'!CQ:CQ=C5)*ISNUMBER(MATCH('WORK DRIVER'!CV:CV, {"MRM Tasks","OMRs","RAIs","RMs"}, 0))*N('WORK DRIVER'!GC:GC))/B5), "Error")
+So far, the best solution seems to be pasting all calculated results into one tab before applying further logic.
+
+Just checking with you — do you have any alternative suggestions or a more efficient approach?
