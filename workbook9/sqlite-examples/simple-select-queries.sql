@@ -1,3 +1,5 @@
-=SUM(FILTER(Data!W:W, (ISNUMBER(SEARCH({"RAI","OMR","BAU"}, Data!E:E))) * (Data!F:F = "M" & B2)))
-=SUM(FILTER(Data!W:W, (ISNUMBER(SEARCH({"RAI","OMR","BAU"}, Data!E:E))) * (Data!F:F = "M" & B2) * (Data!G:G = 2025)))
-SELECT FirstName, LastName FROM Customers WHERE LastName = 'Griffin';
+=IFERROR(
+  VLOOKUP(GG2, STATIC!B:A, 2, FALSE) *
+  INDEX(GC:GC, MATCH(1, (CQ:CQ=GG2)*(CV:CV=GL2), 0)) /
+  SUMIFS(GC:GC, CQ:CQ, GG2, CV:CV, {"MRM Tasks","OMRs","RAIs","RMs"}),
+0)
