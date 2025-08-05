@@ -1,4 +1,3 @@
-=IFERROR(
-  FILTER(GD:GD, (CQ:CQ=GG5)*(CV:CV=GL5)) * XLOOKUP(GG5, STATIC!C:C, STATIC!A:A, 0),
-  ""
-)
+Rajini is out of office, so we’re unable to join without the host starting the meeting. If there are any updates, please share them here.
+
+If anyone still wants to meet at the same time, let me know — I can set up a separate meeting.
