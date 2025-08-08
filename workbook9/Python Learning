@@ -1,5 +1,104 @@
-Hands-On CPR & AED Training Brings Lifesaving Skills to GRM
+import os
+from jira import JIRA
+from jira.exceptions import JIRAError
+from datetime import datetime, timedelta
+import logging
 
-On Wednesday, July 30, GRM hosted a hands-on CPR (Cardio Pulmonary Resuscitation) and AED (Automated External Defibrillator) training session. The two-hour course was led by Freddie Burgos, with support from Charles Chouinard and LaShaun Smalls. It was an interactive and practical session where participants learned how to perform CPR, operate an AED, and respond to choking emergencies for both adults and infants.
+# --- Logging setup ---
+logging.basicConfig(level=logging.INFO)
+LOGGER = logging.getLogger("jira_test")
 
-The training gave participants a solid foundation in lifesaving techniques and helped build confidence to respond in real-world emergencies. A big thank you to our instructors for leading such an engaging and valuable session—and to everyone who joined in with focus and enthusiasm.
+# --- Load environment variables securely ---
+# Make sure you set these before running:
+# export JIRA_API_TOKEN="your_token_here"
+# export JIRA_BASE_URL="https://yourcompany.atlassian.net"
+JIRA_API_TOKEN = os.getenv("JIRA_API_TOKEN")
+JIRA_BASE_URL = os.getenv("JIRA_BASE_URL")
+JIRA_EMAIL = os.getenv("JIRA_EMAIL")  # Needed for Atlassian token auth
+
+if not all([JIRA_API_TOKEN, JIRA_BASE_URL, JIRA_EMAIL]):
+    raise EnvironmentError("Missing one or more required environment variables.")
+
+# --- Jira API connection ---
+def setup_jira_api():
+    try:
+        jira_client = JIRA(
+            server=JIRA_BASE_URL,
+            basic_auth=(JIRA_EMAIL, JIRA_API_TOKEN),  # Atlassian cloud auth
+            options={"verify": True}  # Keep TLS verification ON
+        )
+        LOGGER.info("✅ Jira connection established.")
+        return jira_client
+    except JIRAError as e:
+        LOGGER.error(f"❌ Jira connection failed: {e.text}")
+        raise
+
+# --- Query Jira ---
+def query_jira(jql_query, additional_fields=None, include_changelog=False):
+    if not isinstance(jql_query, str) or not jql_query.strip():
+        raise ValueError("JQL query must be a non-empty string.")
+
+    jira_client = setup_jira_api()
+    results = {}
+    start_index = 0
+    max_results = 100
+
+    desired_fields = [
+        "summary",
+        "issuetype",
+        "assignee",
+        "components",
+        "customfield_10020",  # Epic Link example
+        "customfield_12272"   # Parent Link example
+    ]
+    if additional_fields:
+        desired_fields.extend(list(additional_fields.keys()))
+
+    while True:
+        try:
+            issues = jira_client.search_issues(
+                jql_str=jql_query,
+                startAt=start_index,
+                maxResults=max_results,
+                fields=desired_fields,
+                expand="changelog" if include_changelog else None
+            )
+        except JIRAError as e:
+            LOGGER.error(f"Error querying Jira: {e.text}")
+            raise
+
+        for issue in issues:
+            results[issue.key] = {
+                "Summary": issue.fields.summary,
+                "Type": issue.fields.issuetype.name,
+                "Assignee": getattr(issue.fields.assignee, "displayName", None),
+                "Components": [c.name for c in issue.fields.components] if issue.fields.components else [],
+                "Epic Link": getattr(issue.fields, "customfield_10020", None),
+                "Parent Link": getattr(issue.fields, "customfield_12272", None)
+            }
+            if additional_fields:
+                for api_field, alias in additional_fields.items():
+                    value = issue.raw["fields"]
+                    for key in api_field.split("->"):
+                        value = value.get(key, None) if isinstance(value, dict) else None
+                        if value is None:
+                            break
+                    results[issue.key][alias] = value
+
+            if include_changelog:
+                results[issue.key]["Changelog"] = issue.changelog.histories
+
+        if len(issues) < max_results:
+            break
+        start_index += max_results
+
+    LOGGER.info(f"Retrieved {len(results)} issues.")
+    return results
+
+# --- Example run ---
+if __name__ == "__main__":
+    JQL = 'project = "TEST" ORDER BY created DESC'
+    data = query_jira(JQL, additional_fields={"customfield_10149->value": "RAG Status"}, include_changelog=False)
+
+    for k, v in data.items():
+        print(f"{k}: {v}")
