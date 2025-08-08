@@ -1,104 +1,36 @@
-import os
 from jira import JIRA
-from jira.exceptions import JIRAError
-from datetime import datetime, timedelta
-import logging
 
-# --- Logging setup ---
-logging.basicConfig(level=logging.INFO)
-LOGGER = logging.getLogger("jira_test")
+ENV_VALUES = {
+    "JIRA_API_TOKEN": "your_api_token_here",
+    "JIRA_BASE_URL": "https://yourcompany.atlassian.net",
+}
 
-# --- Load environment variables securely ---
-# Make sure you set these before running:
-# export JIRA_API_TOKEN="your_token_here"
-# export JIRA_BASE_URL="https://yourcompany.atlassian.net"
-JIRA_API_TOKEN = os.getenv("JIRA_API_TOKEN")
-JIRA_BASE_URL = os.getenv("JIRA_BASE_URL")
-JIRA_EMAIL = os.getenv("JIRA_EMAIL")  # Needed for Atlassian token auth
+class JiraQuerier:
+    _jira_api = None
 
-if not all([JIRA_API_TOKEN, JIRA_BASE_URL, JIRA_EMAIL]):
-    raise EnvironmentError("Missing one or more required environment variables.")
-
-# --- Jira API connection ---
-def setup_jira_api():
-    try:
-        jira_client = JIRA(
-            server=JIRA_BASE_URL,
-            basic_auth=(JIRA_EMAIL, JIRA_API_TOKEN),  # Atlassian cloud auth
-            options={"verify": True}  # Keep TLS verification ON
-        )
-        LOGGER.info("✅ Jira connection established.")
-        return jira_client
-    except JIRAError as e:
-        LOGGER.error(f"❌ Jira connection failed: {e.text}")
-        raise
-
-# --- Query Jira ---
-def query_jira(jql_query, additional_fields=None, include_changelog=False):
-    if not isinstance(jql_query, str) or not jql_query.strip():
-        raise ValueError("JQL query must be a non-empty string.")
-
-    jira_client = setup_jira_api()
-    results = {}
-    start_index = 0
-    max_results = 100
-
-    desired_fields = [
-        "summary",
-        "issuetype",
-        "assignee",
-        "components",
-        "customfield_10020",  # Epic Link example
-        "customfield_12272"   # Parent Link example
-    ]
-    if additional_fields:
-        desired_fields.extend(list(additional_fields.keys()))
-
-    while True:
-        try:
-            issues = jira_client.search_issues(
-                jql_str=jql_query,
-                startAt=start_index,
-                maxResults=max_results,
-                fields=desired_fields,
-                expand="changelog" if include_changelog else None
+    @classmethod
+    def setup_jira_api(cls):
+        if cls._jira_api is None:
+            cls._jira_api = JIRA(
+                token_auth=ENV_VALUES["JIRA_API_TOKEN"],
+                server=ENV_VALUES["JIRA_BASE_URL"],
+                kerberos=True,
+                options={"verify": False},
             )
-        except JIRAError as e:
-            LOGGER.error(f"Error querying Jira: {e.text}")
-            raise
 
+    @classmethod
+    def get_components_by_project(cls, project_key):
+        cls.setup_jira_api()
+        jql = f'project = {project_key}'
+        issues = cls._jira_api.search_issues(jql, maxResults=50)
+        result = {}
         for issue in issues:
-            results[issue.key] = {
-                "Summary": issue.fields.summary,
-                "Type": issue.fields.issuetype.name,
-                "Assignee": getattr(issue.fields.assignee, "displayName", None),
-                "Components": [c.name for c in issue.fields.components] if issue.fields.components else [],
-                "Epic Link": getattr(issue.fields, "customfield_10020", None),
-                "Parent Link": getattr(issue.fields, "customfield_12272", None)
-            }
-            if additional_fields:
-                for api_field, alias in additional_fields.items():
-                    value = issue.raw["fields"]
-                    for key in api_field.split("->"):
-                        value = value.get(key, None) if isinstance(value, dict) else None
-                        if value is None:
-                            break
-                    results[issue.key][alias] = value
+            comps = issue.fields.components
+            comp_names = [c.name for c in comps] if comps else []
+            result[issue.key] = comp_names
+        return result
 
-            if include_changelog:
-                results[issue.key]["Changelog"] = issue.changelog.histories
-
-        if len(issues) < max_results:
-            break
-        start_index += max_results
-
-    LOGGER.info(f"Retrieved {len(results)} issues.")
-    return results
-
-# --- Example run ---
 if __name__ == "__main__":
-    JQL = 'project = "TEST" ORDER BY created DESC'
-    data = query_jira(JQL, additional_fields={"customfield_10149->value": "RAG Status"}, include_changelog=False)
-
-    for k, v in data.items():
-        print(f"{k}: {v}")
+    components = JiraQuerier.get_components_by_project("GRAAMG")
+    for issue_key, comp_list in components.items():
+        print(f"{issue_key}: Component(s) = {comp_list}")
