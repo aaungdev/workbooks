@@ -1,36 +1,46 @@
-from jira import JIRA
+from jira import JIRA  # Import Jira client library
 
+# Your Jira credentials and base URL — replace these with your real values
 ENV_VALUES = {
     "JIRA_API_TOKEN": "your_api_token_here",
     "JIRA_BASE_URL": "https://yourcompany.atlassian.net",
 }
 
 class JiraQuerier:
-    _jira_api = None
+    _jira_api = None  # Class variable to hold Jira client instance
 
     @classmethod
     def setup_jira_api(cls):
+        # Initialize Jira API client if not already done
         if cls._jira_api is None:
             cls._jira_api = JIRA(
-                token_auth=ENV_VALUES["JIRA_API_TOKEN"],
-                server=ENV_VALUES["JIRA_BASE_URL"],
-                kerberos=True,
-                options={"verify": False},
+                token_auth=ENV_VALUES["JIRA_API_TOKEN"],  # Use API token for authentication
+                server=ENV_VALUES["JIRA_BASE_URL"],       # Jira instance URL
+                kerberos=True,                            # Enable Kerberos authentication (per your original code)
+                options={"verify": False},                # Disable SSL verification (use with caution)
             )
 
     @classmethod
     def get_components_by_project(cls, project_key):
-        cls.setup_jira_api()
-        jql = f'project = {project_key}'
-        issues = cls._jira_api.search_issues(jql, maxResults=50)
-        result = {}
-        for issue in issues:
-            comps = issue.fields.components
-            comp_names = [c.name for c in comps] if comps else []
-            result[issue.key] = comp_names
-        return result
+        cls.setup_jira_api()  # Make sure Jira client is ready
 
+        jql = f'project = {project_key}'  # Jira Query Language string to get all issues for the project
+        issues = cls._jira_api.search_issues(jql, maxResults=50)  # Fetch up to 50 issues
+
+        result = {}  # Dictionary to store results: issue_key -> list of component names
+
+        for issue in issues:
+            comps = issue.fields.components  # Access the components field from issue
+            # Extract component names if any, else empty list
+            comp_names = [c.name for c in comps] if comps else []
+            result[issue.key] = comp_names  # Store component names keyed by issue key
+
+        return result  # Return the dictionary of issue components
+
+# Main block runs when script is executed directly
 if __name__ == "__main__":
-    components = JiraQuerier.get_components_by_project("GRAAMG")
+    components = JiraQuerier.get_components_by_project("GRAAMG")  # Query project GRAAMG
+
+    # Print each issue's key and its Component(s)
     for issue_key, comp_list in components.items():
         print(f"{issue_key}: Component(s) = {comp_list}")
