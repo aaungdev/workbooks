@@ -1,11 +1,4 @@
-Hello Alexandra,
-
-Apologies for the delayed response.
-
-There isn’t an ideal way to view summary messages at the program level, and any changes are likely to cause other issues.
-
-Therefore, we’ve decided to revert to the original approach. I will switch all the labels back within an hour. Please let me know if that works for you.
-
+As mentioned in the conversation below, I’ve updated all the labels back to the original. Please use key message tickets to provide project updates.
 
 from jira import JIRA  # Import Jira client library
 
