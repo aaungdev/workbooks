@@ -1,9 +1,8 @@
-=IFERROR(
-    INDEX($E$2:$E$1000, SMALL(
-        IF(ISNUMBER(FIND(",", $E$2:$E$1000)), ROW($E$2:$E$1000)-ROW($E$2)+1, ""),
-    ROW()-ROW($F$2)+1)),
+==IFERROR(
+    INDEX($E:$E, SMALL(
+        IF(LEN($E:$E)-LEN(SUBSTITUTE($E:$E,",",""))>0, ROW($E:$E), ""),
+    ROW()-ROW($H$2)+1)),
 "")
-
 # Your Jira credentials and base URL — replace these with your real values
 ENV_VALUES = {
     "JIRA_API_TOKEN": "your_api_token_here",
