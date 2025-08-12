@@ -1,8 +1,10 @@
-=SUMIF('Model Capacity Aggregate'!E:E, D5, 'Model Capacity Aggregate'!F:F) +
- SUMIF('Model Capacity Aggregate'!K:K, D5, 'Model Capacity Aggregate'!M:M) +
- SUMIF('Model Capacity Aggregate'!O:O, D5, 'Model Capacity Aggregate'!Q:Q) +
- SUMIF('Model Capacity Aggregate'!S:S, D5, 'Model Capacity Aggregate'!U:U) +
- SUMIF('Model Capacity Aggregate'!W:W, D5, 'Model Capacity Aggregate'!Y:Y)
+=IFERROR(
+  SUMPRODUCT(
+    ('WORK DRIVER'!CQ:CQ=E6) *
+    ISNUMBER(MATCH('WORK DRIVER'!CV:CV, {"MRM Tasks","OMRs","RAIs","RMs"}, 0)) *
+    'WORK DRIVER'!GC:GC
+  ),
+0)
 # Your Jira credentials and base URL — replace these with your real values
 ENV_VALUES = {
     "JIRA_API_TOKEN": "your_api_token_here",
