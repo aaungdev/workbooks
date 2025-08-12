@@ -2,7 +2,7 @@
   SUMPRODUCT(
     ('WORK DRIVER'!CQ:CQ=E6) *
     ISNUMBER(MATCH('WORK DRIVER'!CV:CV, {"MRM Tasks","OMRs","RAIs","RMs"}, 0)) *
-    'WORK DRIVER'!GC:GC
+    N('WORK DRIVER'!GC:GC)
   ),
 0)
 # Your Jira credentials and base URL — replace these with your real values
