@@ -1,6 +1,4 @@
-As mentioned in the conversation below, I’ve updated all the labels back to the original. Please use key message tickets to provide project updates.
-
-from jira import JIRA  # Import Jira client library
+=TRIM(MID(SUBSTITUTE($A$2,",",REPT(" ",100)), (ROW()-ROW($B$2)+1)*100-99, 100))from jira import JIRA  # Import Jira client library
 
 # Your Jira credentials and base URL — replace these with your real values
 ENV_VALUES = {
