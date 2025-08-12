@@ -1,4 +1,8 @@
-=TRIM(MID(SUBSTITUTE($A$2,",",REPT(" ",100)), (ROW()-ROW($B$2)+1)*100-99, 100))from jira import JIRA  # Import Jira client library
+=IFERROR(
+    INDEX($E$2:$E$1000, SMALL(
+        IF(ISNUMBER(FIND(",", $E$2:$E$1000)), ROW($E$2:$E$1000)-ROW($E$2)+1, ""),
+    ROW()-ROW($F$2)+1)),
+"")
 
 # Your Jira credentials and base URL — replace these with your real values
 ENV_VALUES = {
