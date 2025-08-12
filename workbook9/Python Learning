@@ -1,8 +1,8 @@
-==IFERROR(
-    INDEX($E:$E, SMALL(
-        IF(LEN($E:$E)-LEN(SUBSTITUTE($E:$E,",",""))>0, ROW($E:$E), ""),
-    ROW()-ROW($H$2)+1)),
-"")
+=SUMIF('Model Capacity Aggregate'!E:E, D5, 'Model Capacity Aggregate'!F:F) +
+ SUMIF('Model Capacity Aggregate'!K:K, D5, 'Model Capacity Aggregate'!M:M) +
+ SUMIF('Model Capacity Aggregate'!O:O, D5, 'Model Capacity Aggregate'!Q:Q) +
+ SUMIF('Model Capacity Aggregate'!S:S, D5, 'Model Capacity Aggregate'!U:U) +
+ SUMIF('Model Capacity Aggregate'!W:W, D5, 'Model Capacity Aggregate'!Y:Y)
 # Your Jira credentials and base URL — replace these with your real values
 ENV_VALUES = {
     "JIRA_API_TOKEN": "your_api_token_here",
