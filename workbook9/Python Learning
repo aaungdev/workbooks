@@ -1,5 +1,8 @@
-=XLOOKUP(TRIM(Model Capacity Aggregate!K3), INDEX(TRIM(STATIC!D:D),), STATIC!A:A)
-
+=LET(
+  k, --TEXT(Model Capacity Aggregate!K3,"0"),
+  d, --TEXT(STATIC!D:D,"0"),
+  LOOKUP(2, 1/(d=k), STATIC!A:A)
+)
 =XLOOKUP(Model Capacity Aggregate!K3, STATIC!D:D, INDEX(STATIC!A:A,0))
 
 =INDEX(STATIC!A:A, MATCH(Model Capacity Aggregate!K3, STATIC!D:D, 0))
