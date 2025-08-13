@@ -1,3 +1,5 @@
+
+=IFERROR(INDEX(STATIC!A:A, MATCH(Model Capacity Aggregate!K3, STATIC!D:D, 0)), "")
 =SUM(SUMIFS('Capacity Plan'!W:W,
             'Capacity Plan'!F:F,E3,
             'Capacity Plan'!G:G,"*2025*",
