@@ -1,12 +1,7 @@
-Hello Team,
-
-Now that we have completed archiving the repositories, the next step is to document their contents for future reference. This will help us retain corporate memory and ensure important information remains accessible when needed.
-
-Please fill in the table below for the repositories under your ownership and send it back to me by August 25.
-
-Description example:
-Briefly describe what’s in the repository, including relevant metadata and keywords that could help with future searches.
-
+=SUM(SUMIFS('Capacity Plan'!W:W,
+            'Capacity Plan'!F:F,E3,
+            'Capacity Plan'!G:G,"*2025*",
+            'Capacity Plan'!E:E,{"*BAU*","*RAI*","*OMR*"}))
 Category:
 Indicate whether the repository is a model, tool, or other type.
 # Your Jira credentials and base URL — replace these with your real values
