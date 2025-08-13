@@ -1,3 +1,19 @@
+Idea Name
+AMG collaboration sites record retention management
+
+Brief Description
+Alternative Modelling Group will move from having no shared drive record retention review process to implementing a review process by creating procedures to regularly review and move aged records and bulk files into Documentum and delete unneeded files to align with enterprise policy. Benefits include minimizing operational risk and saving 80 hours per year.
+
+Issue (current state)
+To comply with the bank record retention policy, aged files must be moved to Documentum from collaboration sites. Without procedures and an automation tool, aged files are not regularly reviewed or moved, leading to risk of noncompliance over time.
+
+Solution (future/target state)
+Use GRA data infrastructure strategy team’s automation tool to move records to Documentum for retention and delete non-records. Update procedures to ensure quarterly review.
+
+Benefits
+Minimizes operational risk, removes manual effort to identify aged documents, improves space management to reduce storage costs, and avoids production disruption. Expected capacity savings: 80 hours per year.
+
+
 =LET(
   k, --TEXT(Model Capacity Aggregate!K3,"0"),
   d, --TEXT(STATIC!D:D,"0"),
