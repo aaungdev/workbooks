@@ -1,3 +1,9 @@
+=XLOOKUP(TRIM(Model Capacity Aggregate!K3), INDEX(TRIM(STATIC!D:D),), STATIC!A:A)
+
+=XLOOKUP(Model Capacity Aggregate!K3, STATIC!D:D, INDEX(STATIC!A:A,0))
+
+=INDEX(STATIC!A:A, MATCH(Model Capacity Aggregate!K3, STATIC!D:D, 0))
+
 
 =IFERROR(INDEX(STATIC!A:A, MATCH(Model Capacity Aggregate!K3, STATIC!D:D, 0)), "")
 =SUM(SUMIFS('Capacity Plan'!W:W,
