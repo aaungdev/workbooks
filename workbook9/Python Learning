@@ -1,7 +1,11 @@
-Thank you for sharing the contacts for internship opportunities. I’ve connected with Kristen and Meghan, and both are willing to support me in the process. Kristen recommended that I start by connecting with Employee Network associates and getting involved in volunteer activities. She also suggested shadowing someone—possibly you or Luis—to better understand their roles, responsibilities, and build relevant skills.
-
-Could you recommend someone in the Jersey City area who works in automation or data-related fields? I appreciate your help!
-
+=SUMPRODUCT(
+  (Capacity Plan!F:F=J5) *
+  ISNUMBER(SEARCH(SGS1, Capacity Plan!G:G)) *
+  --ISNUMBER(SEARCH("BAU", Capacity Plan!E:E) + 
+            SEARCH("RAI", Capacity Plan!E:E) + 
+            SEARCH("OMR", Capacity Plan!E:E))) *
+  Capacity Plan!W:W
+)
 =LET(
   k, --TEXT(Model Capacity Aggregate!K3,"0"),
   d, --TEXT(STATIC!D:D,"0"),
