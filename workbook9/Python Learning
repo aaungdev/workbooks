@@ -1,20 +1,19 @@
 =SUMPRODUCT(
-  (Capacity Plan!F:F=J5) *
-  ISNUMBER(SEARCH(SGS1, Capacity Plan!G:G)) *
-  --ISNUMBER(SEARCH("BAU", Capacity Plan!E:E) + 
-            SEARCH("RAI", Capacity Plan!E:E) + 
-            SEARCH("OMR", Capacity Plan!E:E))) *
-  Capacity Plan!W:W
+  --('Capacity Plan'!F2:F1000 = J5),
+  --ISNUMBER(SEARCH(SGS1, 'Capacity Plan'!G2:G1000)),
+  --(
+     (
+       IFERROR(SEARCH("BAU", 'Capacity Plan'!E2:E1000), 0) > 0
+     ) +
+     (
+       IFERROR(SEARCH("RAI", 'Capacity Plan'!E2:E1000), 0) > 0
+     ) +
+     (
+       IFERROR(SEARCH("OMR", 'Capacity Plan'!E2:E1000), 0) > 0
+     ) > 0
+   ),
+  IFERROR(--('Capacity Plan'!W2:W1000), 0)
 )
-=LET(
-  k, --TEXT(Model Capacity Aggregate!K3,"0"),
-  d, --TEXT(STATIC!D:D,"0"),
-  LOOKUP(2, 1/(d=k), STATIC!A:A)
-)
-=XLOOKUP(Model Capacity Aggregate!K3, STATIC!D:D, INDEX(STATIC!A:A,0))
-
-=INDEX(STATIC!A:A, MATCH(Model Capacity Aggregate!K3, STATIC!D:D, 0))
-
 
 =IFERROR(INDEX(STATIC!A:A, MATCH(Model Capacity Aggregate!K3, STATIC!D:D, 0)), "")
 =SUM(SUMIFS('Capacity Plan'!W:W,
