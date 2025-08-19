@@ -1,18 +1,8 @@
-=SUMPRODUCT(
-  --('Capacity Plan'!F2:F1000 = J5),
-  --ISNUMBER(SEARCH(SGS1, 'Capacity Plan'!G2:G1000)),
-  --(
-     (
-       IFERROR(SEARCH("BAU", 'Capacity Plan'!E2:E1000), 0) > 0
-     ) +
-     (
-       IFERROR(SEARCH("RAI", 'Capacity Plan'!E2:E1000), 0) > 0
-     ) +
-     (
-       IFERROR(SEARCH("OMR", 'Capacity Plan'!E2:E1000), 0) > 0
-     ) > 0
-   ),
-  IFERROR(--('Capacity Plan'!W2:W1000), 0)
+=SUM(
+  SUMIFS('WORK DRIVER'!GC:GC, 'WORK DRIVER'!CQ:CQ, STATIC!B5, 'WORK DRIVER'!CV:CV, "MRM Tasks"),
+  SUMIFS('WORK DRIVER'!GC:GC, 'WORK DRIVER'!CQ:CQ, STATIC!B5, 'WORK DRIVER'!CV:CV, "OMRs"),
+  SUMIFS('WORK DRIVER'!GC:GC, 'WORK DRIVER'!CQ:CQ, STATIC!B5, 'WORK DRIVER'!CV:CV, "RAIs"),
+  SUMIFS('WORK DRIVER'!GC:GC, 'WORK DRIVER'!CQ:CQ, STATIC!B5, 'WORK DRIVER'!CV:CV, "RMs")
 )
 
 =IFERROR(INDEX(STATIC!A:A, MATCH(Model Capacity Aggregate!K3, STATIC!D:D, 0)), "")
