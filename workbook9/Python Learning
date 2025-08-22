@@ -1,3 +1,20 @@
+
+Hello,
+
+Happy Friday!
+
+I’ve reviewed the model guidelines site but wasn’t able to find information addressing my broader question. I am looking for details on which MMR deliverables apply to active models and which apply to inactive models.
+
+For example:
+	•	Active Models: OMR, RAI, RMs, …
+	•	Inactive Models: RAI, …
+
+Could you please provide any information you have regarding this?
+
+Thank you for your help!
+
+Best regards,
+
 =SUM(
   SUMIFS('WORK DRIVER'!GC:GC, 'WORK DRIVER'!CQ:CQ, STATIC!B5, 'WORK DRIVER'!CV:CV, "MRM Tasks"),
   SUMIFS('WORK DRIVER'!GC:GC, 'WORK DRIVER'!CQ:CQ, STATIC!B5, 'WORK DRIVER'!CV:CV, "OMRs"),
