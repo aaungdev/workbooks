@@ -1,15 +1,5 @@
 
-Hello,
-
-I’d like to propose including either “Submission” or “Model Development” as a keyword in Jira submission tickets.
-
-In Central, I am connecting MMR deliverables data with the capacity value from each deliverable ticket. This analysis helps identify how much capacity each submission requires, enabling us to better predict future submissions and quickly determine if we can take on a new model. The purpose is purely for central reporting and analysis.
-
-For OMR, RAI, and RMs work, you’ve added “BAU,” which helps with pulling the data. However, submission summaries are not consistently using standard keywords.
-
-Could you add or provide the keyword(s) you plan to use for Banking Book submission deliverable tickets? This will help ensure consistency and improve our analysis.
-
-Thank you for your support.
+Hello, the sign-off compliant status shows as False when the sign-off in MMR is earlier than the Jira ticket sign-offs.
 
 =SUM(
   SUMIFS('WORK DRIVER'!GC:GC, 'WORK DRIVER'!CQ:CQ, STATIC!B5, 'WORK DRIVER'!CV:CV, "MRM Tasks"),
