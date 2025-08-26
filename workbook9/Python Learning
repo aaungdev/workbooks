@@ -1,6 +1,15 @@
 
-Hello, the sign-off compliant status shows as False when the sign-off in MMR is earlier than the Jira ticket sign-offs.
-
+=IFERROR(
+   FILTER(GC:GC, (CQ:CQ=GF206)*(CV:CV=GK206)) *
+   IFS(
+      OR(GK206="OMRs", GK206="RAIs", GK206="RMs"),
+         XLOOKUP(GF206, STATIC!B:B, 'BAU CAPACITY AGGREGATE'!C:C, 0),
+      OR(GK206="Submissions - MDR", GK206="Submissions - non-MDR"),
+         XLOOKUP(GF206, STATIC!B:B, 'SUBMISSION CAPACITY AGGREGATE'!C:C, 0),
+      OR(GK206="Breaches - Resolved", GK206="Breaches - Active"),
+         0
+   ),
+"")
 =SUM(
   SUMIFS('WORK DRIVER'!GC:GC, 'WORK DRIVER'!CQ:CQ, STATIC!B5, 'WORK DRIVER'!CV:CV, "MRM Tasks"),
   SUMIFS('WORK DRIVER'!GC:GC, 'WORK DRIVER'!CQ:CQ, STATIC!B5, 'WORK DRIVER'!CV:CV, "OMRs"),
