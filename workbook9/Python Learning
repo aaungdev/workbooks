@@ -1,1 +1,5 @@
-=IF(ISNUMBER(SEARCH("2025", C1)), IFERROR(INDEX(Sheet2!B:B, MATCH(A1, Sheet2!A:A, 0)) * B1, 0), 0)
+Hello,
+
+I’d like to remind you that the SIAI action step below is due on August 30. This is an AMG-owned SIAI, and you are the only owner of this action step. Since the 30th falls on a Saturday, I just wanted to check if it will be ready to close on time.
+
+Thank you!
