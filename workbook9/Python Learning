@@ -1,5 +1,5 @@
-Hello Team,
-
-As part of our ongoing compliance with the Enterprise Data Retention Policy, we need to regularly review and clean up documents to avoid potential breaches. This means removing or archiving files that have not been accessed in the past 3 years.
-
-“Last accessed document” refers to the most recent time a file was opened or used.
+=IF(D2<1,1,
+   IF(D2<2.25,2,
+   IF(D2<3.5,3,
+   IF(D2<5,4,
+   IF(D2<25,5,0)))))
