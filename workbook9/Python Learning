@@ -1,3 +1,14 @@
 =IF(AND(MONTH($AX2)-MONTH(K$1)>=0, MONTH($AX2)-MONTH(K$1)<=$J2-1), $G2/$J2, 0)
 =IF(AND(K$1>=DATE(YEAR($AX2), MONTH($AX2)-$J2+1, 1), K$1<=DATE(YEAR($AX2), MONTH($AX2), 1)),$G2/$J2,0)
 =IF(AND(K$1<=EOMONTH($AX2,0), K$1>=EDATE($AX2,-$J2+1)),$G2/$J2,0)
+
+
+Hello,
+
+I am reaching out regarding the status update of a new Tableau project. Back in April, I requested a new project, but I was unable to submit the level-4 manager attestation since we were temporarily on hold with Tableau and finalizing the work in Excel. Once that is completed, we plan to begin using the Tableau site.
+
+At the time, I assumed the project had been cancelled because we could not submit the attestation on time. However, I recently received an access attestation for this site, even though I never had one previously.
+
+Could you please clarify whether we already have an active Tableau site, or if not, what stage the project is currently in?
+
+Thank you,
